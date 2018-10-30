@@ -35,7 +35,7 @@ func main() {
 		"source": "go-metrics-test",
 	}
 	server := "https://vmware.wavefront.com"
-	token := "b573b1b1-d42a-4518-9611-5a5668891671"
+	token := "add your wavefront token"
 	go wavefront.WavefrontDirect(metrics.DefaultRegistry, 5*time.Second, hostTags, "direct.prefix", server, token)
 	go metrics.Log(metrics.DefaultRegistry, 60*time.Second, log.New(os.Stdout, "metrics: ", log.Lmicroseconds))
 
