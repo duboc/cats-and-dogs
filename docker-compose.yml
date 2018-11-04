@@ -3,7 +3,7 @@ services:
   wavefront_proxy:
     image: wavefronthq/proxy:4.31
     ports:
-      - "2878:2878"
+      - "2879:2879"
       - "4242:4242"
     environment:
       WAVEFRONT_URL: ${WAVEFRONT_URL}
@@ -16,7 +16,7 @@ services:
     ports:
       - "9090:9090"
     environment:
-      WF_PROXY: wavefront_proxy:2878
+      WF_PROXY: wavefront_proxy:2879
     networks:
       - proxy
   frontend:
