@@ -3,7 +3,7 @@ export class HttpService {
   _handleErrors(res) {
     if (!res.ok) {
       console.log(res);
-      alert(res);
+      //alert(res);
       throw new Error(res.statusText);
     }
     return res;

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run --rm --name nginx -v $(pwd):/usr/share/nginx/html:ro -p 8080:80 nginx:1.15.0
+docker run --rm -d -p 80:80 -p 81:81 duboc/cdfrontend:1.1
