@@ -4,7 +4,7 @@ services:
     image: wavefronthq/proxy:4.31
     ports:
       - "2879:2878"
-      - "4242:4242"
+      - "4243:4242"
     environment:
       WAVEFRONT_URL: ${WAVEFRONT_URL}
       WAVEFRONT_TOKEN: ${WAVEFRONT_TOKEN}
@@ -34,6 +34,20 @@ services:
       - nginx_logs:/var/log/nginx:ro
     networks:
       - proxy
+  cadvisor:
+    image: wavefronthq/cadvisor:latest
+    ports:
+      - "8080:8080"
+    networks: 
+      - proxy
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    environment:
+      wf_source: catsanddogs
+      wf_proxy_host: wavefront_proxy:2878
 
 networks:
   proxy:
