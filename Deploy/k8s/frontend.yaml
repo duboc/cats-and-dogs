@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: catdogfe
-        image: duboc/cdfrontend:1.2
+        image: duboc/cdfrontend:1.3
         ports:
         - containerPort: 80
+        env:
+          - name: BACKEND_URL
+            value: "http://catdogbe-service/"

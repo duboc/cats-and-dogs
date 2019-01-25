@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: catdogbe
-        image: duboc/cdbackendend:1.1
+        image: duboc/cdbackend:1.1
         ports:
         - containerPort: 9090
