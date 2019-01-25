@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: catdogfe
-        image: duboc/cdfrontend:1.3
+        image: duboc/cdfrontend:1.4
         ports:
         - containerPort: 80
         env:
           - name: BACKEND_URL
-            value: "http://a71362c9c20b411e988650e4859a4e15-117918950.us-east-1.elb.amazonaws.com/"
+            value: "http://a71362c9c20b411e988650e4859a4e15-117918950.us-east-1.elb.amazonaws.com"
