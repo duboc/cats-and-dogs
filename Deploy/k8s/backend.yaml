@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catdogbe-deployment
+  labels:
+    app: catdog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catdog
+  template:
+    metadata:
+      labels:
+        app: catdog
+    spec:
+      containers:
+      - name: catdogbe
+        image: duboc/cdbackendend:1.1
+        ports:
+        - containerPort: 9090
