@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catdogfe-deployment
+  labels:
+    app: catdog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catdog
+  template:
+    metadata:
+      labels:
+        app: catdog
+    spec:
+      containers:
+      - name: catdogfe
+        image: duboc/cdfrontend:1.2
+        ports:
+        - containerPort: 80
