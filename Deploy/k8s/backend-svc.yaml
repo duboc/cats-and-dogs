@@ -3,14 +3,13 @@ kind: Service
 metadata:
   name: catdogbe-service
   labels:
-    app: catdog
-    stage: dev
+    app: catdogbe-svc
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - name: http
     port: 80
-    targetPort: 80
+    targetPort: 9090
     protocol: TCP
   selector:
-    type: catdog-be
+    app: catdogbe

@@ -9,7 +9,7 @@ const resultDiv = $('#resultDiv')
 document.querySelector('#btnCat').onclick = (event) => {
   event.preventDefault();
   console.log("Clicou no Gato");
-  let ret = http.get('${BACKEND_URL}');
+  let ret = http.get('${BACKEND_URL}/api/cat');
   ret.then( ret => {
     var img = document.createElement("img");
     img.src = "cat.jpg"
@@ -26,7 +26,7 @@ document.querySelector('#btnCat').onclick = (event) => {
 document.querySelector('#btnDog').onclick = (event) => {
   event.preventDefault();
   console.log("Clicou no Cachorro");
-  let ret = http.get('${BACKEND_URL}');
+  let ret = http.get('${BACKEND_URL}/api/dog');
   ret.then( ret => {
     var img = document.createElement("img");
     img.src = "dog.jpg";
