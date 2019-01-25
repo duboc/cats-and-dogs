@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: catdogfe-deployment
   labels:
-    app: catdog
+    app: catdogfe
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: catdog
+      app: catdogfe
   template:
     metadata:
       labels:
-        app: catdog
+        app: catdogfe
     spec:
       containers:
       - name: catdogfe

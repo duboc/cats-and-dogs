@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: catdogfe-service
   labels:
-    app: catdog
-    stage: dev
+    app: catdogfe-svc
 spec:
   type: LoadBalancer
   ports:
-  - name: http
-    port: 80
-    targetPort: 80
-    protocol: TCP
+    - port: 80
+    #  - name: http
+    #    port: 80
+    #    targetPort: 80
+    #    protocol: TCP
   selector:
-    type: catdog-fe
+    app: catdogfe
