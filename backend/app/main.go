@@ -10,14 +10,17 @@ import (
 	"os"
 	"time"
 
+	"github.com/opentracing/opentracing-go"
 	metrics "github.com/rcrowley/go-metrics"
 	wavefront "github.com/wavefronthq/go-metrics-wavefront"
+	"github.com/wavefronthq/wavefront-opentracing-sdk-go/reporter"
+	"github.com/wavefronthq/wavefront-opentracing-sdk-go/tracer"
+	"github.com/wavefronthq/wavefront-sdk-go/application"
+	"github.com/wavefronthq/wavefront-sdk-go/senders"
 )
 
 func main() {
-
 	rand.Seed(time.Now().UTC().UnixNano())
-
 	// Counter metrics registry
 	//metricRequestDurationDog := metrics.GetOrRegisterTimer("request.dog.duration", metrics.DefaultRegistry)
 	//metricRequestDurationCat := metrics.GetOrRegisterTimer("request.cat.duration", metrics.DefaultRegistry)
@@ -34,11 +37,47 @@ func main() {
 		"source": "petshop",
 	}
 
+	// configure direct sender
+
+	directCfg := &senders.DirectConfiguration{
+		// Your Wavefront instance URL
+		Server: "https://vmware.wavefront.com",
+
+		// Wavefront API token created with direct ingestion permission
+		Token: "b573b1b1-d42a-4518-9611-5a5668891671",
+
+		// Optional: Override the batch size (in data points). Default: 10,000. Recommended not to exceed 40,000.
+		BatchSize: 20000,
+
+		// Optional: Override the max buffer size (in data points). Default: 50,000. Higher values could use more memory.
+		MaxBufferSize: 50000,
+
+		// Optional: Override the flush interval (in seconds). Default: 1 second
+		FlushIntervalSeconds: 2,
+	}
+
+	// Create the direct sender
+	sender, err := senders.NewDirectSender(directCfg)
+	if err != nil {
+		// handle error
+	}
+	// Use the direct sender to send data
+
+	//app metrics https://github.com/wavefrontHQ/wavefront-opentracing-sdk-go
+
+	appTags := application.New("Petshop", "order")
+
+	reporter := reporter.New(sender, appTags, reporter.Source("petshop.app.com"))
+
+	tracer := tracer.New(reporter)
+
+	opentracing.InitGlobalTracer(tracer)
+
 	//server := os.Getenv("WAVEFRONT_INSTANCE")
 	//token := os.Getenv("WAVEFRONT_TOKEN")
 	//go wavefront.WavefrontDirect(metrics.DefaultRegistry, 5*time.Second, hostTags, "zoologico", server, token)
 	// report to a Wavefront proxy
-	addr, _ := net.ResolveTCPAddr("tcp", os.Getenv("WF_PROXY"))
+	addr, _ := net.ResolveTCPAddr("tcp", os.Getenv(""))
 	go wavefront.WavefrontProxy(metrics.DefaultRegistry, 5*time.Second, hostTags, "petshop", addr)
 	//go metrics.Log(metrics.DefaultRegistry, 10*time.Second, log.New(os.Stdout, "metrics: ", log.Lmicroseconds))
 
