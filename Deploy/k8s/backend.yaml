@@ -19,4 +19,3 @@ spec:
         image: duboc/cdbackend:1.1
         ports:
         - containerPort: 9090
-

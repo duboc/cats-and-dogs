@@ -15,7 +15,7 @@ import (
 	//"github.com/wavefronthq/wavefront-opentracing-sdk-go/tracer"
 	//"github.com/wavefronthq/wavefront-sdk-go/application"
 	//"github.com/wavefronthq/wavefront-sdk-go/senders"
-	
+
 	metrics "github.com/rcrowley/go-metrics"
 	"github.com/wavefronthq/go-metrics-wavefront/reporting"
 	"github.com/wavefronthq/wavefront-sdk-go/application"
