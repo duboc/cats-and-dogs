@@ -47,10 +47,10 @@ func main() {
 
 	directCfg := &senders.DirectConfiguration{
 		// Your Wavefront instance URL
-		Server: "https://vmware.wavefront.com",
+		Server: "https://url.wavefront.com",
 
 		// Wavefront API token created with direct ingestion permission
-		Token: "b573b1b1-d42a-4518-9611-5a5668891671",
+		Token: "token",
 
 		// Optional: Override the batch size (in data points). Default: 10,000. Recommended not to exceed 40,000.
 		BatchSize: 20000,
