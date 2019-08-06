@@ -20,7 +20,7 @@ services:
     networks:
       - proxy
   frontend:
-    image: duboc/cdfrontend:1.2
+    image: duboc/cdfrontend:1.7
     ports:
       - "80:80"
     networks:
