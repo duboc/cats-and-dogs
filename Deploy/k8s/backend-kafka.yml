@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catdogbe-kafka-deployment
+  labels:
+    app: catdogbe-kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catdogbe-kafka
+  template:
+    metadata:
+      labels:
+        app: catdogbe-kafka
+    spec:
+      containers:
+      - name: catdogbe-kafka
+        image: duboc/cdbackend-kafka:1.0
+        ports:
+        - containerPort: 9090
+        env:
+          - name: KAKFA_URL
+            value: "http://kafka:9092"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: catdogbe-kafka-service
+  labels:
+    app: catdogbe-kafka-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9090
+    protocol: TCP
+  selector:
+    app: catdogbe-kafka

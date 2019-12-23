@@ -8,3 +8,8 @@ COPY cat.jpg /usr/share/nginx/html/
 COPY dog.jpg /usr/share/nginx/html/
 COPY hedhog.jpg /usr/share/nginx/html/
 
+#COPY start.sh /start.sh
+
+CMD ["nginx", "-g", "daemon off;"]
+
+#CMD ["/start.sh"]
