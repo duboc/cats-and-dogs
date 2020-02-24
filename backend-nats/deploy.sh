@@ -1,6 +1,6 @@
 #!/bin/sh
 /usr/local/go/bin/go build  
-mv backend-nats /var/apps
+mv backend-nats $HOME/apps
 
 #ip-tables for nats with app
 iptables -A INPUT -p tcp --destination-port 80 -m state --state NEW,ESTABLISHED -j ACCEPT
