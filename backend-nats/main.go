@@ -77,10 +77,10 @@ func main() {
 
 	opentracing.InitGlobalTracer(tracer)
 
-	fmt.Println("Listen 9090 .....")
+	fmt.Println("Listen 80 .....")
 	http.HandleFunc("/api/dog", handler(metricRequestDurationDog, counterErrorDog))
 	http.HandleFunc("/api/cat", handler(metricRequestDurationCat, counterErrorCat))
-	http.ListenAndServe(":9090", nil)
+	http.ListenAndServe(":80", nil)
 }
 
 func createDurationMetric(animal string) metrics.Timer {

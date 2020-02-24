@@ -1,4 +1,4 @@
-module backend
+module backend-nats
 
 require (
 	github.com/caio/go-tdigest v2.3.0+incompatible // indirect
@@ -6,7 +6,7 @@ require (
 	github.com/gogo/protobuf v1.2.1 // indirect
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/kisielk/errcheck v1.2.0 // indirect
-	github.com/nats-io/nats.go v1.9.1 // indirect
+	github.com/nats-io/nats.go v1.9.1
 	github.com/opentracing/opentracing-go v1.0.2
 	github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a
 	github.com/stretchr/objx v0.1.1 // indirect
