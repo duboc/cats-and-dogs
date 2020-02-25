@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run --restart=always -d -p 27017:27017 -e NATS_ENDPOINT= -e MONGODB_ENDPOINT= duboc/cdbackend-mongo:1.0
+docker run --restart=always -d -e NATS_ENDPOINT=$NATS_ENDPOINT -e MONGODB_ENDPOINT=$MONGODB_ENDPOINT duboc/cdbackend-mongo:1.0
